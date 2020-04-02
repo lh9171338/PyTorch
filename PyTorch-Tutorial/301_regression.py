@@ -7,7 +7,6 @@ torch: 0.4
 matplotlib
 """
 import torch
-import torch.nn.functional as F
 import matplotlib.pyplot as plt
 
 # torch.manual_seed(1)    # reproducible
@@ -30,9 +29,10 @@ class Net(torch.nn.Module):
         self.predict = torch.nn.Linear(n_hidden, n_output)   # output layer
 
     def forward(self, x):
-        x = F.relu(self.hidden(x))      # activation function for hidden layer
-        x = self.predict(x)             # linear output
+        x = torch.relu(self.hidden(x))      # activation function for hidden layer
+        x = self.predict(x)              # linear output
         return x
+
 
 net = Net(n_feature=1, n_hidden=10, n_output=1)     # define the network
 print(net)  # net architecture

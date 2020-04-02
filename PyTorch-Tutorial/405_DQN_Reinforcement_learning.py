@@ -10,7 +10,6 @@ numpy
 """
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
 import numpy as np
 import gym
 
@@ -38,7 +37,7 @@ class Net(nn.Module):
 
     def forward(self, x):
         x = self.fc1(x)
-        x = F.relu(x)
+        x = torch.relu(x)
         actions_value = self.out(x)
         return actions_value
 
@@ -95,6 +94,7 @@ class DQN(object):
         self.optimizer.zero_grad()
         loss.backward()
         self.optimizer.step()
+
 
 dqn = DQN()
 

@@ -103,15 +103,17 @@ for epoch in range(EPOCH):
         optimizer.step()                    # apply gradients
 
         if step % 100 == 0:
-            print('Epoch: ', epoch, '| train loss: %.4f' % loss.data.numpy())
+            print('Epoch: ', epoch + 1, '| train loss: %.4f' % loss.data.numpy())
 
             # plotting decoded image (second row)
             _, decoded_data = autoencoder(view_data)
             for i in range(N_TEST_IMG):
                 a[1][i].clear()
                 a[1][i].imshow(np.reshape(decoded_data.data.numpy()[i], (28, 28)), cmap='gray')
-                a[1][i].set_xticks(()); a[1][i].set_yticks(())
-            plt.draw(); plt.pause(0.05)
+                a[1][i].set_xticks(())
+                a[1][i].set_yticks(())
+            plt.draw()
+            plt.pause(0.05)
 
 plt.ioff()
 plt.show()
@@ -119,10 +121,14 @@ plt.show()
 # visualize in 3D plot
 view_data = train_data.train_data[:200].view(-1, 28*28).type(torch.FloatTensor)/255.
 encoded_data, _ = autoencoder(view_data)
-fig = plt.figure(2); ax = Axes3D(fig)
+fig = plt.figure(2)
+ax = Axes3D(fig)
 X, Y, Z = encoded_data.data[:, 0].numpy(), encoded_data.data[:, 1].numpy(), encoded_data.data[:, 2].numpy()
 values = train_data.train_labels[:200].numpy()
 for x, y, z, s in zip(X, Y, Z, values):
-    c = cm.rainbow(int(255*s/9)); ax.text(x, y, z, s, backgroundcolor=c)
-ax.set_xlim(X.min(), X.max()); ax.set_ylim(Y.min(), Y.max()); ax.set_zlim(Z.min(), Z.max())
+    c = cm.rainbow(int(255*s/9))
+    ax.text(x, y, z, s, backgroundcolor=c)
+ax.set_xlim(X.min(), X.max())
+ax.set_ylim(Y.min(), Y.max())
+ax.set_zlim(Z.min(), Z.max())
 plt.show()

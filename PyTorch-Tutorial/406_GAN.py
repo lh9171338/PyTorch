@@ -36,6 +36,7 @@ def artist_works():     # painting from the famous artist (real target)
     paintings = torch.from_numpy(paintings).float()
     return paintings
 
+
 G = nn.Sequential(                      # Generator
     nn.Linear(N_IDEAS, 128),            # random ideas (could from normal distribution)
     nn.ReLU(),
@@ -80,7 +81,10 @@ for step in range(10000):
         plt.plot(PAINT_POINTS[0], 1 * np.power(PAINT_POINTS[0], 2) + 0, c='#FF9359', lw=3, label='lower bound')
         plt.text(-.5, 2.3, 'D accuracy=%.2f (0.5 for D to converge)' % prob_artist0.data.numpy().mean(), fontdict={'size': 13})
         plt.text(-.5, 2, 'D score= %.2f (-1.38 for G to converge)' % -D_loss.data.numpy(), fontdict={'size': 13})
-        plt.ylim((0, 3));plt.legend(loc='upper right', fontsize=10);plt.draw();plt.pause(0.01)
+        plt.ylim((0, 3))
+        plt.legend(loc='upper right', fontsize=10)
+        plt.draw()
+        plt.pause(0.01)
 
 plt.ioff()
 plt.show()

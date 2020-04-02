@@ -68,16 +68,17 @@ for epoch in range(EPOCH):
             test_output = cnn(test_x)
 
             # !!!!!!!! Change in here !!!!!!!!! #
-            pred_y = torch.max(test_output, 1)[1].cuda().data  # move the computation in GPU
+            pred_y = torch.max(test_output, 1)[1].cuda()  # move the computation in GPU
 
             accuracy = torch.sum(pred_y == test_y).type(torch.FloatTensor) / test_y.size(0)
-            print('Epoch: ', epoch, '| train loss: %.4f' % loss.data.cpu().numpy(), '| test accuracy: %.2f' % accuracy)
+            print('Epoch: ', epoch, '| train loss: %.4f' % loss.data.cpu().numpy(),
+                  '| test accuracy: %.4f' % accuracy.data.cpu().numpy())
 
 
 test_output = cnn(test_x[:10])
 
 # !!!!!!!! Change in here !!!!!!!!! #
-pred_y = torch.max(test_output, 1)[1].cuda().data # move the computation in GPU
+pred_y = torch.max(test_output, 1)[1].data.cpu().numpy()
 
 print(pred_y, 'prediction number')
 print(test_y[:10], 'real number')

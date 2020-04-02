@@ -6,7 +6,6 @@ Dependencies:
 torch: 0.1.11
 """
 import torch
-import torch.nn.functional as F
 
 
 # replace following class code with an easy sequential network
@@ -17,9 +16,10 @@ class Net(torch.nn.Module):
         self.predict = torch.nn.Linear(n_hidden, n_output)   # output layer
 
     def forward(self, x):
-        x = F.relu(self.hidden(x))      # activation function for hidden layer
+        x = torch.relu(self.hidden(x))      # activation function for hidden layer
         x = self.predict(x)             # linear output
         return x
+
 
 net1 = Net(1, 10, 1)
 

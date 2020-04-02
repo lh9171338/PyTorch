@@ -63,6 +63,7 @@ class RNN(nn.Module):
         # outs = self.out(r_out)
         # return outs
 
+
 rnn = RNN()
 print(rnn)
 
