@@ -1,2 +1,5 @@
 # 1. Introduction
->> PyTorch projects.
+>>This repository is PyTorch demoes.
+
+# 2. More Resources
+- [Github Link](https://github.com/lh9171338/Outline)
