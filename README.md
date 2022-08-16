@@ -3,7 +3,7 @@
 
 # 1. Introduction
 
-This repository is PyTorch Tutorials.
+This repository is PyTorch tutorials.
 
 # 2. More Resources
 
