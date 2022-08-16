@@ -23,11 +23,11 @@ TIME_STEP = 28          # rnn time step / image height
 INPUT_SIZE = 28         # rnn input size / image width
 LR = 0.01               # learning rate
 DOWNLOAD_MNIST = True   # set to True if haven't download the data
-
+DATASET_PATH = '../dataset/'
 
 # Mnist digital dataset
 train_data = dsets.MNIST(
-    root='./mnist/',
+    root=DATASET_PATH,
     train=True,                         # this is training data
     transform=transforms.ToTensor(),    # Converts a PIL.Image or numpy.ndarray to
                                         # torch.FloatTensor of shape (C x H x W) and normalize in the range [0.0, 1.0]
@@ -45,7 +45,7 @@ plt.show()
 train_loader = torch.utils.data.DataLoader(dataset=train_data, batch_size=BATCH_SIZE, shuffle=True)
 
 # convert test data into Variable, pick 2000 samples to speed up testing
-test_data = dsets.MNIST(root='./mnist/', train=False, transform=transforms.ToTensor())
+test_data = dsets.MNIST(root=DATASET_PATH, train=False, transform=transforms.ToTensor())
 test_x = test_data.test_data.type(torch.FloatTensor)[:2000]/255.   # shape (2000, 28, 28) value in range(0,1)
 test_y = test_data.test_labels.numpy()[:2000]    # covert to numpy array
 

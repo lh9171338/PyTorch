@@ -1,5 +1,11 @@
-[<img height="23" src="https://github.com/lh9171338/Outline/blob/master/icon.jpg"/>](https://github.com/lh9171338/Outline) PyTorch
+[<img height="23" src="https://github.com/lh9171338/Outline/blob/master/icon.jpg"/>](https://github.com/lh9171338/Outline) PyTorch Tutorial
 ===
 
 # 1. Introduction
->>This repository is PyTorch demoes.
+
+This repository is PyTorch Tutorials.
+
+# 2. More Resources
+
+- 莫烦Python: [[Project]](https://mofanpy.com/tutorials/machine-learning/torch/) [[Code]](https://github.com/MorvanZhou/PyTorch-Tutorial)
+

@@ -25,10 +25,11 @@ BATCH_SIZE = 64
 LR = 0.005         # learning rate
 DOWNLOAD_MNIST = False
 N_TEST_IMG = 5
+DATASET_PATH = '../dataset'
 
 # Mnist digits dataset
 train_data = torchvision.datasets.MNIST(
-    root='./mnist/',
+    root=DATASET_PATH,
     train=True,                                     # this is training data
     transform=torchvision.transforms.ToTensor(),    # Converts a PIL.Image or numpy.ndarray to
                                                     # torch.FloatTensor of shape (C x H x W) and normalize in the range [0.0, 1.0]
